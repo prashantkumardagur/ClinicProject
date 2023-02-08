@@ -11,8 +11,8 @@ router.post("/login", validator.validateLoginData , auth.login);
 router.post("/register", validator.validateRegisterData, auth.register);
 
 router.use(authCheck);
-router.post("/addDoctor", isStaff, validator.validateNewDoctorData, auth.addDoctor);
-router.post("/removeDoctor", isStaff, auth.removeDoctor);
+router.post("/addStaff", isStaff, validator.validateNewStaffData, auth.addStaff);
+router.post("/removeStaff", isStaff, auth.removeStaff);
 // =============================================================
 
 module.exports = router;

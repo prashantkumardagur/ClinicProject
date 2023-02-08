@@ -24,7 +24,7 @@ module.exports.login = async (req, res) => {
     // Create token with user data and role
     user.password = undefined;
     const token = jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '24h' });
-    res.send({ success: true, token: token, user: user });
+    res.status(200).send({ success: true, token: token, user: user });
   
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -39,7 +39,7 @@ module.exports.register = async (req, res) => {
     try {
       // Check if user exists
       const user = await User.findOne({where :{ email: email } });
-      if (user) return res.status(400).json({ success: false, error: 'User already exists.' });
+      if (user) return res.status(409).json({ success: false, error: 'User already exists.' });
 
       const hashedPassword = await bcrypt.hash(password, 12);
       
@@ -55,7 +55,7 @@ module.exports.register = async (req, res) => {
 }
 
 
-module.exports.removeDoctor = async (req, res) => {
+module.exports.removeStaff = async (req, res) => {
     const { email } = req.body;
     try {
         const doctor = await User.findOne({ where: { email: email } });
@@ -72,20 +72,20 @@ module.exports.removeDoctor = async (req, res) => {
 
 
 
-module.exports.addDoctor = async (req, res) => {
-  const { name, email, password } = req.body;
+module.exports.addStaff = async (req, res) => {
+  const { name, email, password, role } = req.body;
 
   try {
     // Check if user exists
     const user = await User.findOne({ where : { email: email } });
-    if(user) return res.status(400).json({ success: false, error: 'Doctor already exists.' });
+    if(user) return res.status(409).json({ success: false, error: `${role} already exists.` });
 
     const hashedPassword = await bcrypt.hash(password, 12);
     
     // Create new doctor
-    const newDoctor = await User.create({ name, email, password : hashedPassword, role : "doctor" });
+    const newDoctor = await User.create({ name, email, password : hashedPassword, role });
     
-    res.status(201).json({ success: true, message: 'Doctor created successfully.' });
+    res.status(201).json({ success: true, message: `${role} created successfully.`});
   
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
