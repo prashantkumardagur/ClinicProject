@@ -44,13 +44,14 @@ module.exports.validateRegisterData = async (req, res, next) => {
 
 
 
-module.exports.validateNewDoctorData = async (req, res, next) => {
+module.exports.validateNewStaffData = async (req, res, next) => {
 
   // Schema for validating new doctor data
   const schema = joi.object({
     name: joi.string().min(3).max(64).required().regex(/^[^<>%$()]*$/),
     email: joi.string().min(3).max(64).required().email(),
-    password: joi.string().min(6).max(32).required().regex(/^[^<>%$()]*$/)
+    password: joi.string().min(6).max(32).required().regex(/^[^<>%$()]*$/),
+    role: joi.string().allow('doctor', 'staff').required()
   }).required();
 
   // Validate the data

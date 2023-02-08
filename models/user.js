@@ -14,7 +14,8 @@ const User          = sequelize.define('User', {
   role    : DataTypes.STRING,
 });
 
-
+// async function a() {await sequelize.sync()}
+// a();
 
 module.exports = User;
 //const users = await User.findAll();

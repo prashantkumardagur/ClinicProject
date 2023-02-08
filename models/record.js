@@ -9,8 +9,8 @@ const Record        = sequelize.define('Record', {
   patient       : DataTypes.STRING, //email foreign key
   doctor        : DataTypes.STRING, //email foreign key
   approvedBy    : DataTypes.STRING, //email foreign key
-  date          : DataTypes.DATE, // preferred appointment date  -> process date.toLocaleDateString()
-  time          : DataTypes.TIME, // preferred appointment time
+  date          : DataTypes.STRING, // preferred appointment date  -> process date.toLocaleDateString()
+  time          : DataTypes.TIME, // preferred appointment time  -> process date.toLocaleTimeString()
   notes         : DataTypes.STRING,
   status        : DataTypes.STRING,
   prescription  : DataTypes.STRING,
@@ -18,7 +18,7 @@ const Record        = sequelize.define('Record', {
 
 });
 
-// async function a() {await sequelize.sync({ force: false , alter : true })}
+// async function a() {await sequelize.sync()}
 // a();
 
 

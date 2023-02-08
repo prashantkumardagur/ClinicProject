@@ -8,8 +8,10 @@ const { authCheck, isDoctor } = require('../middlewares/auth_middleware');
 // Routes =============================================================
 
 router.use(authCheck);
+router.use(isDoctor);
 
-router.get("/", (req, res) => { res.send("Doctor Routes") })
+router.get("/appointments", doctor.getAppointments);
+router.post("/modify-appointment", doctor.modifyAppointment);
 
 
 // =============================================================
