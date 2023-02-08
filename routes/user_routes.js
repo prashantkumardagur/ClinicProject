@@ -3,9 +3,15 @@ const router = express.Router();
 
 const user = require('../controllers/user_controller');
 
+const { authCheck, isUser } = require('../middlewares/auth_middleware');
+const { validateApp } = require("../validators/user_validator");
+
+
 // Routes =============================================================
 
-router.get("/", (req, res) => { res.send("user Routes") })
+router.use(authCheck);
+router.use(isUser);
+router.post("/create-appointment", user.createAppointment);
 
 
 // =============================================================

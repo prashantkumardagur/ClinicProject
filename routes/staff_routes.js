@@ -7,6 +7,7 @@ const { authCheck, isStaff } = require('../middlewares/auth_middleware');
 
 // Routes =============================================================
 
+
 router.post("/get-patients", authCheck, isStaff, staff.getPatients);
 router.post("/get-doctors", authCheck, isStaff, staff.getDoctors);
 router.post("/get-appointments", authCheck, isStaff, staff.getAppointments);
