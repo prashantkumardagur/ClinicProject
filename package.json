@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "sequelize": "^6.28.0",
+    "sqlite3": "^5.1.4"
+  },
+  "name": "clinicproject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashantkumardagur/ClinicProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prashantkumardagur/ClinicProject/issues"
+  },
+  "homepage": "https://github.com/prashantkumardagur/ClinicProject#readme",
+  "description": ""
+}
