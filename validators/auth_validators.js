@@ -8,7 +8,7 @@ module.exports.validateLoginData = async (req, res, next) => {
   
   // Sschema for validating login data
   const schema = joi.object({
-      email: joi.string().min(3).max(64).required().email(),
+      email: joi.string().min(3).max(64).required(),
       password: joi.string().min(6).max(32).required().regex(/^[^<>%$()]*$/),
   }).required();
 
@@ -30,8 +30,7 @@ module.exports.validateRegisterData = async (req, res, next) => {
   const schema = joi.object({
     name: joi.string().min(3).max(64).required().regex(/^[^<>%$()]*$/),
     email: joi.string().min(3).max(64).required().email(),
-    password: joi.string().min(6).max(32).required().regex(/^[^<>%$()]*$/),
-    role : joi.string().allow('user', 'doctor', 'staff').required()
+    password: joi.string().min(6).max(32).required().regex(/^[^<>%$()]*$/)
   }).required();
 
   // Validate the data
