@@ -11,12 +11,12 @@ const { validateRecordData } = require("../validators/staff_validators");
 router.use(authCheck);
 router.use(isStaff);
 
-router.get("/patients", staff.getPatients);
-router.get("/doctors", staff.getDoctors);
-router.get("/appointment-count", staff.getAppointmentCount);
-router.get("/appointments", staff.getAppointments);
+router.post("/patients", staff.getPatients);
+router.post("/doctors", staff.getDoctors);
+router.post("/appointment-count", staff.getAppointmentCount);
+router.post("/appointments", staff.getAppointments);
 
-router.get("/appointment/:id", staff.getAppointmentById);
+router.post("/appointment/:id", staff.getAppointmentById);
 router.post("/appointment", validateRecordData, staff.modifyAppointment);
  
 // =============================================================

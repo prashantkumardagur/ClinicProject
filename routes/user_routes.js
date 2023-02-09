@@ -12,7 +12,7 @@ const { validateApp } = require("../validators/user_validators");
 router.use(authCheck);
 router.use(isUser);
 router.post("/create-appointment", user.createAppointment);
-router.get("/profile", user.getProfile);
+router.post("/profile", user.getProfile);
 router.post("/cancel-appointment", user.cancelAppointment);
 
 

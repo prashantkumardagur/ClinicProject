@@ -34,17 +34,18 @@ module.exports.login = async (req, res) => {
 
 module.exports.register = async (req, res) => {
     
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
     try {
       // Check if user exists
       const user = await User.findOne({where :{ email: email } });
       if (user) return res.status(409).json({ success: false, error: 'User already exists.' });
 
+      // Hash password
       const hashedPassword = await bcrypt.hash(password, 12);
       
       // Create new user
-      const newUser = await User.create({ name, email, password : hashedPassword, role });
+      const newUser = await User.create({ name, email, password : hashedPassword, role: "user" });
 
       res.status(201).json({ success: true, message: 'User created successfully.' });
 
@@ -58,11 +59,11 @@ module.exports.register = async (req, res) => {
 module.exports.removeStaff = async (req, res) => {
     const { email } = req.body;
     try {
-        const doctor = await User.findOne({ where: { email: email } });
-        // If doctor not found
-        if (!doctor) return res.status(404).json({ success: false, message : "doctor not found" })
+        const user = await User.findOne({ where: { email: email } });
+        // If user not found
+        if (!user) return res.status(404).json({ success: false, message : "user not found" })
         
-        doctor.destroy();
+        user.destroy();
         res.status(200).json({ success: true, message: 'Doctor deleted successfully.' });
     }
     catch (err) {
@@ -80,6 +81,7 @@ module.exports.addStaff = async (req, res) => {
     const user = await User.findOne({ where : { email: email } });
     if(user) return res.status(409).json({ success: false, error: `${role} already exists.` });
 
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
     
     // Create new doctor
