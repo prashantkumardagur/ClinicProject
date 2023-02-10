@@ -17,7 +17,7 @@ router.post("/appointment-count", staff.getAppointmentCount);
 router.post("/appointments", staff.getAppointments);
 
 router.post("/appointment/:id", staff.getAppointmentById);
-router.post("/appointment", validateRecordData, staff.modifyAppointment);
+router.post("/modify-appointment", validateRecordData, staff.modifyAppointment);
  
 // =============================================================
 

@@ -6,7 +6,7 @@ const User = require('../models/User');
 
 //= ===================================================================================
 
-
+// controller to login user, doctor or staff
 module.exports.login = async (req, res) => {
 
   const { email, password } = req.body;
@@ -32,6 +32,8 @@ module.exports.login = async (req, res) => {
 
 }
 
+
+// controller to register a new user
 module.exports.register = async (req, res) => {
     
     const { name, email, password } = req.body;
@@ -56,6 +58,7 @@ module.exports.register = async (req, res) => {
 }
 
 
+// controller to remove a user
 module.exports.removeStaff = async (req, res) => {
     const { email } = req.body;
     try {
@@ -72,7 +75,7 @@ module.exports.removeStaff = async (req, res) => {
 }
 
 
-
+// controller to add a new doctor or staff
 module.exports.addStaff = async (req, res) => {
   const { name, email, password, role } = req.body;
 
