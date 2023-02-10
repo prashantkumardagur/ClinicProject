@@ -1,16 +1,13 @@
 // ENVIROMENT VARIABLES =====================================================================
 require('dotenv').config()
 
+
 // IMPORTS =================================================================================
 
 const express = require('express')
 const cors = require('cors')
 
-
-// CONFIGS =================================================================================
-
-const app           = express()
-const port          = 5000
+const app = express()
 
 
 
@@ -49,6 +46,6 @@ app.use((req, res, next) => {
 
 // SERVER ==================================================================================
 
-app.listen(port, function() {
-    console.log(`App is running on port ${port}`)
+app.listen(process.env.PORT, function() {
+    console.log(`App is running on port ${process.env.PORT}`)
 })
