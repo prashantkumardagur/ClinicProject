@@ -32,7 +32,7 @@ app.use("/staff", staffRoutes)
 app.use("/user", userRoutes)
 
 
-
+// HOMEPAGE
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
