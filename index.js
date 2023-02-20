@@ -3,7 +3,6 @@ require('dotenv').config()
 
 
 // IMPORTS =================================================================================
-// express framework
 const express = require('express')
 const cors = require('cors')
 
