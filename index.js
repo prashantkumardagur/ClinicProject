@@ -39,10 +39,13 @@ app.get('/', (req, res) => {
 
 
 // 404 PAGE NOT FOUND =======================================================================
-app.use((req, res, next) => {
-    res.status(404).send({ success: false, message: "Page Not Found" })
-});
+// app.use((req, res, next) => {
+//     res.status(404).send({ success: false, message: "Page Not Found" })
+// });
 
+app.use((req, res, next) => {
+    res.status(403).send({ success: false, message: "Forbidden error" })
+});
 
 
 // SERVER ==================================================================================
