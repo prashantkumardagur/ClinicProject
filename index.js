@@ -26,6 +26,8 @@ const staffRoutes = require('./routes/staff_routes')
 const userRoutes = require('./routes/user_routes')
 
 
+//  MIDDLEWARES ==================================================================
+
 app.use("/auth", authRoutes)
 app.use("/doctor", doctorRoutes)
 app.use("/staff", staffRoutes)
